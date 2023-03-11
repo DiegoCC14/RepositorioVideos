@@ -1,67 +1,72 @@
+<!DOCTYPE html>
 <html>
-		
-	{% load static %}
-	
 	<head>
+		<title>Login</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap 4 CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- Font Awesome CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+			integrity="sha512-M2A6Oxo+0nBtJ5C5SPrM5q3JfsoILv5yL4grn4jmFCISJn7YtRgz+dlDzqrUCuoDYDBZwkzJTDMMltLHTf+zxQ=="
+			crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<style>
+			body {
+				background-color: #f1f1f1;
+			}
 
-		<title>Inicio de Secion</title>
+			.container-login {
+				margin-top: 10%;
+			}
 
-		<link rel="stylesheet" type="text/css" href="{% static 'css_login/bootstrap.min.css' %}">
+			.card-header {
+				background-color: #17a2b8;
+				color: #fff;
+			}
 
-		<link rel="stylesheet" type="text/css" href="{% static 'css_login/font-awesome.min.css' %}">
+			.btn-login {
+				background-color: #17a2b8;
+				color: #fff;
+			}
 
-		<link rel="stylesheet" type="text/css" href="{% static 'css_login/animate.css' %}">
+			.btn-login:hover {
+				background-color: #11707a;
+			}
 
-		<link rel="stylesheet" type="text/css" href="{% static 'css_login/hamburgers.min.css' %}">
-
-		<link rel="stylesheet" type="text/css" href="{% static 'css_login/select2.min.css' %}">
-
-		<link rel="stylesheet" type="text/css" href="{% static 'css_login/util.css' %}">
-		
-		<link rel="stylesheet" type="text/css" href="{% static 'css_login/main.css' %}">
-
+		</style>
 	</head>
 
 	<body>
-		<div class="limiter">
-			<div class="container-login100">
-				<div class="wrap-login100">
-					
-					<div class="login100-pic js-tilt">
-						<img src="{% static 'img_login/upload_video.png' %}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 container-login">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="text-center">Login</h4>
+						</div>
+						<div class="card-body">
+
+							<form method="POST" action="{% url 'login' %}">
+								{% csrf_token %}
+								<div class="form-group">
+									<label for="username">Username:</label>
+									<input type="text" class="form-control" id="username" name="username" required>
+								</div>
+								<div class="form-group">
+									<label for="password">Password:</label>
+									<input type="password" class="form-control" id="password" name="password" required>
+								</div>
+								<button type="submit" class="btn btn-login btn-block">Login</button>
+							</form>
+						</div>
 					</div>
-					
-					<form class="login100-form validate-form" action="{% url 'login' %}" method="POST">
-						{% csrf_token %}
-
-						<span class="login100-form-title">
-							Inicio de Secion
-						</span>
-
-						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-							<input class="input100" type="text" name="username" placeholder="Username">
-						</div>
-						
-						<div class="wrap-input100 validate-input">
-							<input class="input100" type="password" name="password" placeholder="Password">
-						</div>
-
-						<div class="container-login100-form-btn">
-							<input class="login100-form-btn" type="submit" value="Acceder">
-
-						</div>
-						
-						<div class="text-center p-t-12">
-						</div>
-						
-						<div class="text-center p-t-136">
-						</div>
-
-					</form>
-
 				</div>
 			</div>
 		</div>
-
+		<!-- Bootstrap 4 JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	</body>
 </html>
