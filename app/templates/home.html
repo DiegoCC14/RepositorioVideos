@@ -19,21 +19,17 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a href="{% url 'home' %}">TUS VIDEOS FAVORITOS</a></h1>
-						<nav class="links">
-							<ul>
-								<li><a href="#">Ver Videos</a></li>
-								<li><a href="{% url 'admin:index' %}" target="_blank">Subir Videos</a></li>
-								<li><a href="{% url 'logout' %}" >Logout</a></li>
-								
-							</ul>
-						</nav>
-
-						
-						
-
-					</header>
+				<header id="header">
+					<h1><a href="{% url 'home' %}">TUS VIDEOS FAVORITOS</a></h1>
+					<nav class="links">
+						<ul>
+							<li><a href="#">Ver Videos</a></li>
+							<li><a href="{% url 'admin:index' %}" target="_blank">Subir Videos</a></li>
+							<li><a href="{% url 'all_videos_view' %}" >Todos los Videos</a></li>
+							<li><a href="{% url 'logout' %}" >Logout</a></li>
+						</ul>
+					</nav>
+				</header>
 
 				<!-- Main -->
 					<div id="main">

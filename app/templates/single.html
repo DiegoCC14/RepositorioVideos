@@ -23,31 +23,17 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a href="{% url 'home' %}">Tus Videos Favoritos</a></h1>
-						<nav class="links">
-							<ul>
-								<li><a href="#"> Ver Videos </a></li>
-								<li><a href="#"> Subir Videos </a></li>
-
-							</ul>
-						</nav>
-
-						<nav class="main">
-							<ul>
-								<li class="search">
-									<a class="fa-search" href="#search">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
-									</form>
-								</li>
-								<li class="menu">
-									<a class="fa-bars" href="#menu">Menu</a>
-								</li>
-							</ul>
-						</nav>
-
-					</header>
+				<header id="header">
+					<h1><a href="{% url 'home' %}">TUS VIDEOS FAVORITOS</a></h1>
+					<nav class="links">
+						<ul>
+							<li><a href="#">Ver Videos</a></li>
+							<li><a href="{% url 'admin:index' %}" target="_blank">Subir Videos</a></li>
+							<li><a href="{% url 'all_videos_view' %}" >Todos los Videos</a></li>
+							<li><a href="{% url 'logout' %}" >Logout</a></li>
+						</ul>
+					</nav>
+				</header>
 
 
 				<!-- Main -->
