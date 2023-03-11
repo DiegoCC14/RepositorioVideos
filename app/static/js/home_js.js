@@ -27,7 +27,7 @@ function pinta_datos_video_usuario( json_video ){
         $(div_article).find("#cantidad_reproducciones_video_user").text( "Cantidad de Reproducciones: " + video["cantidad_reproducciones"] )
         $(div_article).find("#fecha_ingreso_video_user").text( "Fecha de Ingreso: " + video["fecha_ingreso"] )
         
-        $(div_article).find(".etiqueta_a_url_video").attr( "href" , window.location.href.substring(0, 22)+"app/ver_video/"+video["id_video"] )
+        $(div_article).find(".etiqueta_a_url_video").attr( "href" , url_video_single.replace('99999999', String( video["id_video"] ) ) )
 
         $( div_article ).insertBefore("#div_article_main")
     }); 

@@ -24,5 +24,5 @@ urlpatterns = [
 	path('home/', login_required( Home.as_view() ) , name="home"),
     path('api_videos/', login_required( Api_Videos_User.as_view() ) ),
     path('api_top_videos/', login_required( Api_Top_Videos.as_view() ) ),
-    path('ver_video/<int:id_video>', login_required( Ver_Video_Single.as_view() ) ),
+    path('ver_video/<int:id_video>', login_required( Ver_Video_Single.as_view() ) , name='ver_video_single' ),
 ]
