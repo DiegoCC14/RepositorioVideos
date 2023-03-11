@@ -70,6 +70,60 @@ class Api_Top_Videos( View ):
 
 		return JsonResponse( {"top_videos": top_videos } )
 
+class Api_All_Videos_Publicos( View ):
+
+	def get( self , request ):
+		request_data = request.GET.dict()
+
+		all_videos_public_users = Video.objects.filter( id_estado__nombre="Publico" ).order_by('-cantidad_reproducciones')
+		#all_videos_public_users = all_videos_public_users[ int(request_data["limite_inferior"]) : int(request_data["limite_superior"]) ]
+		
+		#--Serializador -->>
+		all_videos = []
+		for video_public in all_videos_public_users:
+			all_videos.append( {
+				"id_video": video_public.id,
+				"username": video_public.id_user.username,
+				"titulo": video_public.titulo , "direccion": video_public.direccion,
+				"cantidad_reproducciones": video_public.cantidad_reproducciones,
+				"fecha_ingreso": video_public.fecha_ingreso,
+				"Origen_Video":{
+								"nombre": video_public.id_origen.nombre
+								},
+				"Estado_Video":{"nombre": video_public.id_estado.nombre},
+				"imagen": request.build_absolute_uri( video_public.imagen.url )
+			} )
+		#----------------->>
+
+		return JsonResponse( {"all_videos": all_videos } )
+
+class Api_Busqueda_Videos( View ):
+	def get ( self , request ):
+		request_data = request.GET.dict()
+		print( request_data["nombre_video_search"] )
+		all_videos_search_public = Video.objects.filter( titulo__startswith=request_data["nombre_video_search"] )
+		#all_videos_public_users = all_videos_public_users[ int(request_data["limite_inferior"]) : int(request_data["limite_superior"]) ]
+		
+		#--Serializador -->>
+		all_videos = []
+		for video_public in all_videos_search_public:
+			all_videos.append( {
+				"id_video": video_public.id,
+				"username": video_public.id_user.username,
+				"titulo": video_public.titulo , "direccion": video_public.direccion,
+				"cantidad_reproducciones": video_public.cantidad_reproducciones,
+				"fecha_ingreso": video_public.fecha_ingreso,
+				"Origen_Video":{
+								"nombre": video_public.id_origen.nombre
+								},
+				"Estado_Video":{"nombre": video_public.id_estado.nombre},
+				"imagen": request.build_absolute_uri( video_public.imagen.url )
+			} )
+		#----------------->>
+
+		return JsonResponse( {"search_videos": all_videos } )
+
+
 class Ver_Video_Single( View ):
 	
 	def get( self , request , id_video ):
@@ -104,3 +158,10 @@ class Ver_Video_Single( View ):
 				return render( request , 'single.html' , data_video )
 
 		return redirect('home') #Redireccionamos al inicio
+
+
+
+class All_Videos_View( View ):
+
+	def get( self , request ):
+		return render( request , 'all_videos.html')
